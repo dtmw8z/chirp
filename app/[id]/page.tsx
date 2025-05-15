@@ -25,9 +25,9 @@ const fetchPost = async (id: string) => {
 };
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 interface Comment {
@@ -36,7 +36,11 @@ interface Comment {
   username: string;
 }
 
-export default async function page({ params }: PageProps) {
+export default async function page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   const post = await fetchPost(id);
   return (
