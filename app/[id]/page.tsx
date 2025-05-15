@@ -36,8 +36,8 @@ interface Comment {
   username: string;
 }
 
-export default async function page(props: PageProps) {
-  const { id } = await props.params;
+export default async function page({ params }: PageProps) {
+  const { id } = await params;
   const post = await fetchPost(id);
   return (
     <>
