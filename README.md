@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Chirp (Learning Project)
 
-## Getting Started
+This is a learning project where I explore **Next.js**, **React**, and **Firebase** by building a basic Twitter-like clone. The project includes core social media functionalities like posting, authentication, likes, and comments, along with some responsive design practice. 
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features ( Still in Progress )
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- ✅ **User Authentication** (using Firebase Auth)
+- 📝 **Create and View Posts**
+- ❤️ **Like Functionality**
+- 💬 **Comment System**
+- 📱 **Responsive Design** (mobile-friendly UI)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Tech Stack
 
-## Learn More
+- **Framework:** [Next.js](https://nextjs.org/)
+- **Library:** [React](https://react.dev/)
+- **Backend / Auth / DB:** [Firebase](https://firebase.google.com/)
+- **Styling:** Tailwind CSS
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📚 Learning Goals
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Understand the basics of building an app using Next.js App Router
 
-## Deploy on Vercel
+- Practice React hooks, Redux, and component structuring
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Learn Firebase Authentication and Firestore CRUD operations
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Practice responsive web design
+
+---
+
+# 🙌 Acknowledgements
+
+This is a self-motivated project done for learning purposes. Inspired by [tutorial](https://youtu.be/5xXTqwh2jWo?si=ETqMoIqTSKEfUsTd) content on YouTube and official docs.
+
+
+
