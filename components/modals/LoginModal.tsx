@@ -78,7 +78,7 @@ export default function LoginModal() {
         }}
         className="flex justify-center items-center"
       >
-        <div className="w-full h-full sm:w-[600px] sm:h-fit bg-white sm:rounded-xl">
+        <div className="w-full h-full sm:w-[600px] sm:h-fit bg-white sm:rounded-xl outline-none">
           <XMarkIcon
             className="mt-5 ms-5 cursor-pointer w-7"
             onClick={() => dispatch(closeLoginModal())}
