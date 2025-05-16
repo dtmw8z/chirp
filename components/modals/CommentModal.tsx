@@ -33,7 +33,7 @@ export default function CommentModal() {
               replyTo={commentDetails.username}
             />
             <div className="mt-4">
-              <PostInput insideModal={true} />
+              <PostInput insideCommentModal={true} />
             </div>
 
             <div className="absolute w-0.5 h-32 bg-gray-300 left-[33px] sm:left-[53px] top-20 z-0"></div>

@@ -1,3 +1,4 @@
+"use client";
 import {
   HomeIcon,
   HashtagIcon,
@@ -11,7 +12,10 @@ import React from "react";
 import Image from "next/image";
 
 import SidebarUserInfo from "./SidebarUserInfo";
+import { useDispatch } from "react-redux";
+import { openPostModal } from "@/redux/slices/modalSlice";
 export default function Sidebar() {
+  const dispatch = useDispatch();
   return (
     <nav className="h-screen hidden sm:flex flex-col sticky top-0 p-3 xl:ml-20 xl:mr-10">
       <div className="relative h-full flex flex-col ">
@@ -26,7 +30,12 @@ export default function Sidebar() {
           <SidebarItem text="Bookmarks" Icon={BookmarkIcon} />
           <SidebarItem text="Profile" Icon={UserIcon} />
           <SidebarItem text="More" Icon={EllipsisHorizontalCircleIcon} />
-          <button className="hidden xl:block bg-[#F4AF01] w-[200px] h-[50px] rounded-full text-white font-medium cursor-pointer shadow-md mt-2">
+          <button
+            className="hidden xl:block bg-[#F4AF01] w-[200px] h-[50px] rounded-full text-white font-medium cursor-pointer shadow-md mt-2"
+            onClick={() => {
+              dispatch(openPostModal());
+            }}
+          >
             Post
           </button>
         </ul>

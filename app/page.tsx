@@ -1,6 +1,7 @@
 "use client";
-import CommentModal from "@/components/modals/CommentModal";
+import Modals from "@/components/modals";
 import LoadingScreen from "@/components/modals/LoadingScreen";
+import PostModal from "@/components/modals/PostModal";
 import PostFeed from "@/components/PostFeed";
 import Sidebar from "@/components/Sidebar";
 import SignupPrompt from "@/components/SignupPrompt";
@@ -14,9 +15,7 @@ export default function Home() {
         <PostFeed />
         <Widgets />
       </div>
-      <CommentModal />
-      <SignupPrompt />
-      <LoadingScreen />
+      <Modals />
     </>
   );
 }

@@ -19,14 +19,21 @@ import {
 import { db } from "@/firebase";
 import { RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import { set } from "date-fns";
-import { closeCommentModal, openLoginModal } from "@/redux/slices/modalSlice";
+import {
+  closeCommentModal,
+  closePostModal,
+  openLoginModal,
+} from "@/redux/slices/modalSlice";
 
 interface PostInputProps {
-  insideModal?: boolean;
+  insideCommentModal?: boolean;
+  insidePostModal?: boolean;
 }
 
-export default function PostInput({ insideModal }: PostInputProps) {
+export default function PostInput({
+  insideCommentModal,
+  insidePostModal,
+}: PostInputProps) {
   const [text, setText] = useState("");
 
   const user = useSelector((state: RootState) => state.user);
@@ -59,9 +66,11 @@ export default function PostInput({ insideModal }: PostInputProps) {
 
     await updateDoc(postRef, {
       comments: arrayUnion({
+        id: Date.now().toString(),
         name: user.name,
         username: user.username,
         text: text,
+        timestamp: new Date(),
       }),
     });
 
@@ -69,12 +78,28 @@ export default function PostInput({ insideModal }: PostInputProps) {
     dispatch(closeCommentModal());
   }
 
+  async function handleSubmit() {
+    if (!user.username) {
+      dispatch(openLoginModal());
+      return;
+    }
+
+    if (insideCommentModal) {
+      await handleComment();
+    } else {
+      await handlePost();
+      if (insidePostModal) {
+        dispatch(closePostModal());
+      }
+    }
+  }
+
   return (
     <div className="flex space-x-5 p-3 border-b border-gray-100">
       <Image
         className="w-11 h-11 z-10 bg-white"
-        src={insideModal ? "/assets/profile1.jpg" : "/assets/logo.png"}
-        alt={insideModal ? "profile" : "logo"}
+        src={insideCommentModal ? "/assets/profile1.jpg" : "/assets/logo.png"}
+        alt={insideCommentModal ? "profile" : "logo"}
         width={48}
         height={48}
       />
@@ -82,7 +107,9 @@ export default function PostInput({ insideModal }: PostInputProps) {
       <div className="w-full">
         <textarea
           className="resize-none outline-none w-full min-h-[50px] text-lg"
-          placeholder={insideModal ? "Write a comment..." : "What's happening?"}
+          placeholder={
+            insideCommentModal ? "Write a comment..." : "What's happening?"
+          }
           onChange={(e) => setText(e.target.value)}
           value={text}
         />
@@ -98,11 +125,11 @@ export default function PostInput({ insideModal }: PostInputProps) {
           <button
             className="bg-[#F4AF01] text-white w-[80px] h-[36px] rounded-full text-sm cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-80 transition"
             onClick={() => {
-              insideModal ? handleComment() : handlePost();
+              handleSubmit();
             }}
             disabled={!text}
           >
-            Post
+            {insideCommentModal ? "Reply" : insidePostModal ? "Post" : "Post"}
           </button>
         </div>
       </div>

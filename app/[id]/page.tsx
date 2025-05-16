@@ -13,7 +13,8 @@ import {
   EllipsisHorizontalIcon,
   HeartIcon,
 } from "@heroicons/react/24/outline";
-import { doc, getDoc } from "firebase/firestore";
+import { format, formatDistance, subDays } from "date-fns";
+import { doc, getDoc, Timestamp } from "firebase/firestore";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -31,9 +32,11 @@ interface PageProps {
 }
 
 interface Comment {
+  id?: string;
   name: string;
   text: string;
   username: string;
+  timestamp?: Timestamp;
 }
 
 export default async function page({
@@ -82,9 +85,21 @@ export default async function page({
             <span>{post?.text}</span>
           </div>
 
-          <div className="border-b border-gray-100 p-3 text-[15px]">
-            {" "}
-            <span className="font-bold">{post?.likes.length}</span> Likes
+          <div className="flex border-b border-gray-100 p-3 text-[15px] space-x-3">
+            {post?.timestamp && (
+              <>
+                <span className="text-[#707e89]">
+                  {format(post.timestamp.toDate(), "h:mm a · MMM d, yyyy")}
+                </span>
+              </>
+            )}
+            <div>
+              <span className="font-bold">{post?.likes.length}</span> Likes
+            </div>
+            <div>
+              <span className="font-bold">{post?.comments.length}</span>{" "}
+              Comments
+            </div>
           </div>
 
           <div className="border-b border-gray-100 p-3 text-[15px] flex justify-evenly">
@@ -94,13 +109,21 @@ export default async function page({
             <ArrowUpTrayIcon className="w-[22px] h-[22px] text-[#707e89] cursor-not-allowed" />
           </div>
 
-          {post?.comments &&
-            post.comments.map((comment: Comment) => (
+          {[...(post?.comments || [])]
+            .sort(
+              (a, b) =>
+                (b.timestamp?.toMillis() || 0) - (a.timestamp?.toMillis() || 0)
+            )
+            .map((comment: Comment) => (
               <Comment
-                key={comment.username}
+                key={
+                  comment.id ||
+                  `${comment.username}-${comment.timestamp?.toMillis()}`
+                }
                 name={comment.name}
                 text={comment.text}
                 username={comment.username}
+                timestamp={comment.timestamp}
               />
             ))}
         </div>
@@ -118,10 +141,15 @@ interface CommentProps {
   username: string;
 }
 
-function Comment({ name, text, username }: Comment) {
+function Comment({ name, text, username, timestamp }: Comment) {
   return (
     <div className="  border-b border-gray-100">
-      <PostHeader name={name} username={username} text={text} />
+      <PostHeader
+        name={name}
+        username={username}
+        text={text}
+        timestamp={timestamp}
+      />
 
       <div className="flex space-x-14 p-3 ms-16">
         <ChatBubbleOvalLeftEllipsisIcon className="w-[22px] h-[22px]  cursor-not-allowed" />

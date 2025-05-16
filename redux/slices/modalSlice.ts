@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { set } from "date-fns";
 
 const initialState = {
   signUpModalOpen: false,
@@ -11,6 +10,7 @@ const initialState = {
     id: "",
     text: "",
   },
+  postModalOpen: false,
 };
 
 const modalSlice = createSlice({
@@ -41,6 +41,12 @@ const modalSlice = createSlice({
       state.commentPostDetails.id = action.payload.id;
       state.commentPostDetails.text = action.payload.text;
     },
+    openPostModal: (state) => {
+      state.postModalOpen = true;
+    },
+    closePostModal: (state) => {
+      state.postModalOpen = false;
+    },
   },
 });
 
@@ -52,6 +58,8 @@ export const {
   openCommentModal,
   closeCommentModal,
   setCommentDetails,
+  openPostModal,
+  closePostModal,
 } = modalSlice.actions;
 
 export default modalSlice.reducer;
