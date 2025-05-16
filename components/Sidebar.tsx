@@ -12,10 +12,13 @@ import React from "react";
 import Image from "next/image";
 
 import SidebarUserInfo from "./SidebarUserInfo";
-import { useDispatch } from "react-redux";
-import { openPostModal } from "@/redux/slices/modalSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { openLoginModal, openPostModal } from "@/redux/slices/modalSlice";
+import { RootState } from "@/redux/store";
 export default function Sidebar() {
   const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.user);
+
   return (
     <nav className="h-screen hidden sm:flex flex-col sticky top-0 p-3 xl:ml-20 xl:mr-10">
       <div className="relative h-full flex flex-col ">
@@ -33,6 +36,10 @@ export default function Sidebar() {
           <button
             className="hidden xl:block bg-[#F4AF01] w-[200px] h-[50px] rounded-full text-white font-medium cursor-pointer shadow-md mt-2"
             onClick={() => {
+              if (!user.username) {
+                dispatch(openLoginModal());
+                return;
+              }
               dispatch(openPostModal());
             }}
           >
