@@ -53,7 +53,7 @@ export default function SignupModal() {
         "guest12345@gmail.com",
         "12345678"
       );
-      console.log("Logged in as guest", guest.user);
+
       dispatch(
         signInUser({
           name: guest.user.displayName,

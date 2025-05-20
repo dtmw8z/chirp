@@ -1,8 +1,8 @@
 import React from "react";
 import SignupPrompt from "../SignupPrompt";
 import CommentModal from "./CommentModal";
-import LoadingScreen from "./LoadingScreen";
 import PostModal from "./PostModal";
+import EditProfileModal from "./EditProfileModal";
 
 export default function Modals() {
   return (
@@ -10,7 +10,7 @@ export default function Modals() {
       <CommentModal />
       <PostModal />
       <SignupPrompt />
-      <LoadingScreen />
+      <EditProfileModal />
     </>
   );
 }

@@ -5,12 +5,13 @@ const initialState = {
   loginModalOpen: false,
   commentModalOpen: false,
   commentPostDetails: {
-    name: "",
-    username: "",
     id: "",
     text: "",
+    name: "",
+    username: "",
   },
   postModalOpen: false,
+  editProfileModalOpen: false,
 };
 
 const modalSlice = createSlice({
@@ -36,16 +37,22 @@ const modalSlice = createSlice({
       state.commentModalOpen = false;
     },
     setCommentDetails: (state, action) => {
-      state.commentPostDetails.name = action.payload.name;
-      state.commentPostDetails.username = action.payload.username;
       state.commentPostDetails.id = action.payload.id;
       state.commentPostDetails.text = action.payload.text;
+      state.commentPostDetails.name = action.payload.name;
+      state.commentPostDetails.username = action.payload.username;
     },
     openPostModal: (state) => {
       state.postModalOpen = true;
     },
     closePostModal: (state) => {
       state.postModalOpen = false;
+    },
+    openEditProfileModal: (state) => {
+      state.editProfileModalOpen = true;
+    },
+    closeEditProfileModal: (state) => {
+      state.editProfileModalOpen = false;
     },
   },
 });
@@ -60,6 +67,8 @@ export const {
   setCommentDetails,
   openPostModal,
   closePostModal,
+  openEditProfileModal,
+  closeEditProfileModal,
 } = modalSlice.actions;
 
 export default modalSlice.reducer;

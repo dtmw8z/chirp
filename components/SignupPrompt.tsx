@@ -9,8 +9,6 @@ import { useSelector } from "react-redux";
 export default function SignupPrompt() {
   const name = useSelector((state: RootState) => state.user.name);
 
-  console.log(name);
-
   return (
     !name && (
       <div className="fixed w-full h-[80px] bg-[#f4af01] bottom-0 flex justify-center items-center md:space-x-5 lg:justify-between lg:px-20 xl:px-40 2xl:80">

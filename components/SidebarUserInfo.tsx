@@ -26,9 +26,9 @@ export default function SidebarUserInfo() {
       className="absolute bottom-3 flex items-center justify-start space-x-2 xl:p-3 xl:pe-6 hover:bg-gray-200 hover:bg-opacity-10 rounded-full transition cursor-pointer w-fit xl:w-[240px] "
       onClick={handleSignOut}
     >
-      <Image
+      <img
         className="w-9 h-9 rounded-full object-cover"
-        src={"/assets/profile1.jpg"}
+        src={user?.photoURL || "/assets/profile-pic.jpg"}
         alt="Profile Picture"
         width={48}
         height={48}

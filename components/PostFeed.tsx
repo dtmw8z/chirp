@@ -12,7 +12,6 @@ import {
 } from "firebase/firestore";
 import { db } from "@/firebase";
 import { useDispatch } from "react-redux";
-import { closeLoadingScreen } from "@/redux/slices/loadingSlice";
 
 export default function PostFeed() {
   const [posts, setPosts] = React.useState<
@@ -28,7 +27,6 @@ export default function PostFeed() {
       const snapshotDocs = snapshot.docs;
 
       setPosts(snapshotDocs);
-      dispatch(closeLoadingScreen());
     });
 
     return unsubscribe;

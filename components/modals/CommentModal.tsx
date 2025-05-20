@@ -1,3 +1,5 @@
+"use client";
+
 import { closeCommentModal } from "@/redux/slices/modalSlice";
 import { RootState } from "@/redux/store";
 import { Modal } from "@mui/material";
