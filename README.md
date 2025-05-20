@@ -1,4 +1,4 @@
-# 🚀 Chirp (Learning Project)
+# 🚀 Chirp
 
 This is a basic project where I explore **Next.js**, **React**, and **Firebase** by building a basic Twitter-like clone. The project includes core social media functionalities like posting, authentication, likes, and comments, along with some responsive design practice. 
 
