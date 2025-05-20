@@ -1,10 +1,10 @@
 # 🚀 Chirp (Learning Project)
 
-This is a learning project where I explore **Next.js**, **React**, and **Firebase** by building a basic Twitter-like clone. The project includes core social media functionalities like posting, authentication, likes, and comments, along with some responsive design practice. 
+This is a basic project where I explore **Next.js**, **React**, and **Firebase** by building a basic Twitter-like clone. The project includes core social media functionalities like posting, authentication, likes, and comments, along with some responsive design practice. 
 
 ---
 
-## ✨ Features ( Still in Progress )
+## ✨ Features 
 
 - ✅ **User Authentication** (using Firebase Auth)
 - 📝 **Create and View Posts**
@@ -25,7 +25,7 @@ This is a learning project where I explore **Next.js**, **React**, and **Firebas
 
 ## 📚 Learning Goals
 
-- Understand the basics of building an app using Next.js App Router
+- Understand the basics of building an app using Next.js
 
 - Practice React hooks, Redux, and component structuring
 
